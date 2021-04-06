@@ -133,10 +133,37 @@ Vector Vector::operator-(const Vector &rhs) const {
         return Vector(0);
     Vector retVal(_size);
     for (size_t i = 0; i < _size; ++i) {
-        retVal._data[i] = _data[i] - rhs._data[i];
+        retVal._data[i] =  _data[i] - rhs._data[i];
+        //retVal._data[i] = ( _data[i] - rhs._data[i]) * -1;
+        // here
     }
     return retVal;
 }
+/*
+Vector Vector::operator-() const {
+    if(_size == -1 || _size == 0){
+        return -1;
+    }
+    Vector retVal(_size);
+   return operator-(retVal) * -1;
+    
+    
+}
+ */
+Vector Vector::operator*(double val) const {
+    if(_size == -1 || _size == 0){
+        return -1;
+    }
+    Vector retVal(_size);
+    for (size_t i = 0; i < _size; ++i) {
+        retVal._data[i] =  _data[i] * val;
+        
+    }
+    return retVal;
+}
+
+
+
 
 bool Vector::IsValid() const {
     return _size != 0;
@@ -195,4 +222,6 @@ istream &Vector::Read(istream &input) {
     }
     return input;
 }
+
+
 
