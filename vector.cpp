@@ -139,17 +139,22 @@ Vector Vector::operator-(const Vector &rhs) const {
     }
     return retVal;
 }
-/*
+
 Vector Vector::operator-() const {
     if(_size == -1 || _size == 0){
         return -1;
     }
     Vector retVal(_size);
-   return operator-(retVal) * -1;
+    for (size_t i = 0; i < _size; ++i) {
+        retVal._data[i] =  _data[i] * -1;
+        //retVal._data[i] = ( _data[i] - rhs._data[i]) * -1;
+        // here
+    }
+   return (retVal);
     
     
 }
- */
+ 
 Vector Vector::operator*(double val) const {
     if(_size == -1 || _size == 0){
         return -1;
