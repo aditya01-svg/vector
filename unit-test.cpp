@@ -139,7 +139,7 @@ int main(int argc, char* argv[]) {
     assert(DoubleEquals(g[0], 5.0));
     assert(DoubleEquals(g[1], 2.4));
     assert(DoubleEquals(g[2], 0.0));
-    g.Write(cout);
+   
     
     DoubleEquals(g.EuclidianDistance(h), sqrt(25.81));
     DoubleEquals(g.EuclidianDistance(g), 0);
