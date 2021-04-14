@@ -82,7 +82,7 @@ double &Vector::operator[](size_t index) {
 string Vector::ToString() const {
     stringstream ss;
     ss << "[";
-    for (int i = 0; i < _size; ++i) {
+    for (size_t i = 0; i < _size; ++i) {
         if (i != _size - 1){
             ss << _data[i] << ", ";
         }else{
@@ -98,7 +98,7 @@ double Vector::EuclidianDistance(const Vector &rhs) const {
         return -1; // Impossible distance!
 
     double sum = 0.0;
-    for (int i = 0; i < _size; ++i) {
+    for (size_t i = 0; i < _size; ++i) {
         sum += pow(_data[i] - rhs._data[i], 2.0);
     }
     return sqrt(sum);
@@ -107,7 +107,7 @@ double Vector::EuclidianDistance(const Vector &rhs) const {
 bool Vector::operator==(const Vector &rhs) const {
     if (_size != rhs._size)
         return false;
-    for (int i = 0; i < _size; ++i) {
+    for (size_t i = 0; i < _size; ++i) {
         if (_data[i] != rhs._data[i])
             return false;
     }
@@ -141,29 +141,22 @@ Vector Vector::operator-(const Vector &rhs) const {
 }
 
 Vector Vector::operator-() const {
-    if(_size == -1 || _size == 0){
+    if(_size == (unsigned )-1 || _size == 0)
         return -1;
-    }
     Vector retVal(_size);
-    for (size_t i = 0; i < _size; ++i) {
+    for (size_t i = 0; i < _size; ++i) 
         retVal._data[i] =  _data[i] * -1;
-        //retVal._data[i] = ( _data[i] - rhs._data[i]) * -1;
-        // here
-    }
    return (retVal);
     
     
 }
  
 Vector Vector::operator*(double val) const {
-    if(_size == -1 || _size == 0){
+    if(_size == (unsigned )-1 || _size == 0)
         return -1;
-    }
     Vector retVal(_size);
-    for (size_t i = 0; i < _size; ++i) {
+    for (size_t i = 0; i < _size; ++i) 
         retVal._data[i] =  _data[i] * val;
-        
-    }
     return retVal;
 }
 
@@ -180,8 +173,8 @@ size_t Vector::Dimensions() const {
 
 ostream &Vector::Write(ostream &output) const {
     output << _size << " ";
-    for (int i = 0; i < _size; ++i) {
-        if (i != _size - 1){
+    for (size_t i = 0; i < _size; ++i) {
+        if ((unsigned )i != _size - 1){
             output << _data[i] << " ";
         }else{
             output << _data[i];
